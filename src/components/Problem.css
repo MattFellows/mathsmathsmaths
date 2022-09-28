@@ -1,0 +1,20 @@
+.problem {
+    display: flex;
+    flex-direction: row;
+}
+.possibility {
+    border: 1px solid #ccd;
+    width: 200px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.possibility.selected {
+    background-color: red;
+    color: #282c34;
+}
+
+.possibility.correct {
+    background-color: green;
+    color: #282c34;
+}
