@@ -4,9 +4,11 @@
 }
 .possibility {
     border: 1px solid #ccd;
-    width: 200px;
+    width: 300px;
+    height: 2em;
+    line-height: 2em;
     cursor: pointer;
-    margin: 5px;
+    margin: 10px;
 }
 
 .possibility.selected {
@@ -17,4 +19,14 @@
 .possibility.correct {
     background-color: green;
     color: #282c34;
+}
+
+.symbol {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.equals {
+    padding-left: 10px;
+    padding-right: 10px;
 }

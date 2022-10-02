@@ -37,9 +37,9 @@ const shuff = (array) => {
       [array[i], array[j]] = [array[j], array[i]];
   }
 }
-const SYMBOLS = ['+','-','*','/']
+const SYMBOLS = ['+','-']
 const generateSymbol = () => {
-  const index = Math.floor(Math.random() * 4);
+  const index = Math.floor(Math.random() * SYMBOLS.length);
   return SYMBOLS[index];
 }
 
