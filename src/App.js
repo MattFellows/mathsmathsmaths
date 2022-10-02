@@ -109,7 +109,7 @@ const App = ({scoreHistory, updateScoreHistory}) => {
       setUselessState(!uselessState)
     }, 1000)
     return () => clearTimeout(timeout)
-  }, [uselessState])
+  }, [uselessState, endTime])
 
   useEffect(() => {
     if (!isRunning) {

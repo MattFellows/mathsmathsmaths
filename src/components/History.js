@@ -1,5 +1,5 @@
 
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, XAxis, YAxis } from 'recharts';
 
 const History = ({data}) => {
     const formattedData = data.map((d, i) => ({name: `Attempt ${i}`, score: d}));
