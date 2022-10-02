@@ -1,10 +1,15 @@
-import logo from './logo.svg';
+import { connect } from "react-redux"
 import Problem from './components/Problem.js'
 import Timer from './components/Timer.js'
+import History from './components/History.js'
 import './App.css';
 import React, {useState, useEffect} from 'react';
 
-const roundTime = 60000;
+const roundTime = 10000;
+
+const maxDP = (num) => {
+  return Math.round(num * 100) / 100
+}
 
 const nearAnswer = (i, answer) => {
   if (i === 0) {
@@ -16,13 +21,13 @@ const nearAnswer = (i, answer) => {
     randDiff = Math.floor(Math.random() * 10) - 5;
   }
   if (rand >= 7) {
-      return answer - randDiff;
+      return maxDP(answer - randDiff)
   }
   if (rand >= 4) {
-      return answer + randDiff;
+      return maxDP(answer + randDiff)
   }
   if (rand >= 0) {
-      return (answer * -1) + randDiff;
+      return maxDP((answer * -1) + randDiff)
   }
 }
 
@@ -90,7 +95,7 @@ const useProblem = () => {
   return {possibilities, lhs, rhs, symbol, answer, next}
 }
 
-const App = () => {
+const App = ({scoreHistory, updateScoreHistory}) => {
 
   const { lhs, rhs, answer, symbol, possibilities, next } = useProblem(); 
   const [ score, setScore ] = useState(0)
@@ -105,6 +110,12 @@ const App = () => {
     }, 1000)
     return () => clearTimeout(timeout)
   }, [uselessState])
+
+  useEffect(() => {
+    if (!isRunning) {
+      updateScoreHistory(score)
+    }
+  }, [isRunning, score, updateScoreHistory])
 
   return (
     <div className="App">
@@ -126,9 +137,20 @@ const App = () => {
             setUselessState(!uselessState)
           }}>Restart</button>
         }
+        <div className="history"><History data={scoreHistory}/></div>
       </header>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (store) => {
+  return {scoreHistory: store.scoreHistory}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateScoreHistory: (score) => dispatch({type:'addToHistory', payload: score})
+  }
+}
+
+export default  connect(mapStateToProps, mapDispatchToProps)(App);
