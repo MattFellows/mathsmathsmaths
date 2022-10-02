@@ -5,7 +5,7 @@ import History from './components/History.js'
 import './App.css';
 import React, {useState, useEffect} from 'react';
 
-const roundTime = 10000;
+const roundTime = 60000;
 
 const maxDP = (num) => {
   return Math.round(num * 100) / 100
