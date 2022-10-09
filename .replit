@@ -1,7 +1,7 @@
 run = "vite"
-entrypoint = "src/App.ts"
+entrypoint = "src/App.jsx"
 
-hidden = [".config", "vite.config.js", ".gitignore"]
+hidden = [".config", "tsconfig.json", "tsconfig.node.json", "vite.config.js", ".gitignore"]
 
 [nix]
 channel = "stable-21_11"
