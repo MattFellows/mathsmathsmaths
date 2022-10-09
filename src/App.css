@@ -35,6 +35,7 @@
 
 .history {
   height: 160px;
+  width: 100vw;
 }
 
 @keyframes App-logo-spin {
